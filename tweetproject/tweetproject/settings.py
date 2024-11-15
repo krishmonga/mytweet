@@ -49,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+
 ]
 
 ROOT_URLCONF = 'tweetproject.urls'
@@ -129,3 +131,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL = '/accounts/login/'  # Default value
+LOGIN_REDIRECT_URL = '/'  # After login, redirect here
+LOGOUT_REDIRECT_URL = '/'  # After logout, redirect here
+
+login_url = '/accounts/login'
+login_redirect_url = '/tweet/'
+logout_redirect_url = '/tweet/'
