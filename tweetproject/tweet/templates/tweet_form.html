@@ -1,12 +1,16 @@
 {% extends "layout.html" %}
 
 {% block title %}
-  New Tweet
+  {% if form.instance.pk %}
+    Edit Tweet
+  {% else %}
+    Create a Tweet
+  {% endif %}
 {% endblock %}
 
 {% block content %}
   <h1 class="text-center">Welcome to our Django project</h1>
-  <h2>
+  <h2 class="text-center">
     {% if form.instance.pk %}
       Edit Tweet
     {% else %}
@@ -20,5 +24,5 @@
     <button class="btn btn-warning" type="submit">Submit</button>
   </form>
 
-  <a href="{% url 'tweet_list' %}">Back to Tweets</a>
+  <a href="{% url 'tweet_list' %}" class="btn btn-secondary mt-3">Back to Tweets</a>
 {% endblock %}

@@ -1,7 +1,26 @@
-   {% extends "layout.html" %}
-   {% block title %}
-   New tweet
-   {% endblock %}
-      {% block content %}
-      <h1 class="text-center   ">welcome to our django project </h1>
-      {% endblock %}
+{% extends "layout.html" %}
+
+{% block title %}
+  Tweet Detail
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-center">Welcome to our Django project</h1>
+  <h2 class="text-center">Tweet Detail</h2>
+
+  <div class="card" style="width: 18rem; margin: auto;">
+    {% if tweet.photo %}
+      <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet Image">
+    {% endif %}
+    <div class="card-body">
+      <h5 class="card-title">{{ tweet.user.username }}</h5>
+      <p class="card-text">{{ tweet.text }}</p>
+      <p class="card-text"><small class="text-muted">Created at: {{ tweet.created_at }}</small></p>
+      <p class="card-text"><small class="text-muted">Updated at: {{ tweet.updated_at }}</small></p>
+      <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+      <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+    </div>
+  </div>
+
+  <a href="{% url 'tweet_list' %}" class="btn btn-secondary mt-3">Back to Tweets</a>
+{% endblock %}

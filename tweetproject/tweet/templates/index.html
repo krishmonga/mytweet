@@ -1,7 +1,13 @@
- {% extends "layout.html" %}
- {% block title %}
- New tweet
- {% endblock %}
-    {% block content %}
-    <h1 class="text-center   ">welcome to our django project </h1>
-    {% endblock %}
+{% extends "layout.html" %}
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-center">Welcome to our Django project</h1>
+  <div class="text-center mt-4">
+    <a class="btn btn-primary" href="{% url 'tweet_list' %}">View Tweets</a>
+    <a class="btn btn-secondary" href="{% url 'tweet_create' %}">Create a Tweet</a>
+  </div>
+{% endblock %}

@@ -1,1 +1,17 @@
-http://127.0.0.1:8000/tweet/create/
+{% extends "layout.html" %}
+
+{% block title %}
+  Register
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-center">Register</h1>
+  <form method="post" class="form mt-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Register</button>
+  </form>
+  <div class="text-center mt-3">
+    <p>Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+  </div>
+{% endblock %}

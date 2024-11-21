@@ -5,13 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponseForbidden
 
-# Create your views here.
 def index(request):
     """
     Renders the homepage.
     """
     return render(request, 'index.html')
-
 
 def tweet_list(request):
     """
@@ -19,7 +17,6 @@ def tweet_list(request):
     """
     tweets = Tweet.objects.all().order_by('-created_at')  # Assuming 'created_at' is a field in the model
     return render(request, 'tweet_list.html', {'tweets': tweets})
-
 
 @login_required
 def tweet_create(request):
@@ -36,7 +33,6 @@ def tweet_create(request):
     else:
         form = TweetForm()
     return render(request, 'tweet_form.html', {'form': form})
-
 
 @login_required
 def tweet_edit(request, tweet_id): 
@@ -56,7 +52,6 @@ def tweet_edit(request, tweet_id):
         form = TweetForm(instance=tweet)
     return render(request, 'tweet_form.html', {'form': form})
 
-
 @login_required
 def tweet_delete(request, tweet_id):
     """
@@ -69,14 +64,12 @@ def tweet_delete(request, tweet_id):
     tweet.delete()
     return redirect('tweet_list')
 
-
 def tweet_detail(request, tweet_id):
     """
     Displays details of a specific tweet.
     """
     tweet = get_object_or_404(Tweet, pk=tweet_id)
     return render(request, 'tweet_detail.html', {'tweet': tweet})
-
 
 def register(request):
     """
